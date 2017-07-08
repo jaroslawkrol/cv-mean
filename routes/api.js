@@ -1,7 +1,11 @@
 var express = require('express');
 var router = express.Router();
 var mongojs = require('mongojs');
-var db = mongojs('mongodb://cv:cvpass@ds149132.mlab.com:49132/cv-database', ['education', 'experience', 'skills', 'personal'])
+
+var env = process.env.NODE_ENV || 'development';
+var config = require('../conf/config')[env];
+
+var db = mongojs(`mongodb://${config.database.user}:${config.database.pass}@${config.database.host}:${config.database.port}/${config.database.db}`, ['education', 'experience', 'skills', 'personal'])
 
 router.get('/education', function (req, res, next) {
     db.education.find(function (err, education) {

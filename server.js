@@ -3,7 +3,7 @@ var path = require('path');
 var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
-var education = require('./routes/education');
+var api = require('./routes/api');
 
 var port = 3000;
 
@@ -22,8 +22,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
 app.use('/', index);
-app.use('/api', education);
+app.use('/api', api);
 
 app.listen(port, function () {
     console.log('SERVER STARTED ON PORT', port);
-})
+})g
