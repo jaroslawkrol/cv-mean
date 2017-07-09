@@ -398,7 +398,9 @@ var PersonalEffects = (function () {
             .startWith(new __WEBPACK_IMPORTED_MODULE_9__actions_personal_actions__["c" /* LoadAction */]())
             .switchMap(function () {
             return _this.personalService.getRecords()
-                .map(function (records) { return new __WEBPACK_IMPORTED_MODULE_9__actions_personal_actions__["d" /* LoadSuccessAction */](records); })
+                .map(function (records) { return new __WEBPACK_IMPORTED_MODULE_9__actions_personal_actions__["d" /* LoadSuccessAction */](records.sort(function (record1, record2) {
+                return record1.position - record2.position;
+            })); })
                 .catch(function () { return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_7_rxjs_observable_of__["of"])(new __WEBPACK_IMPORTED_MODULE_9__actions_personal_actions__["d" /* LoadSuccessAction */]([])); });
         });
     }

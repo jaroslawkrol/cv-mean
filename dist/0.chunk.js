@@ -483,7 +483,9 @@ var SkillsEffects = (function () {
             .startWith(new __WEBPACK_IMPORTED_MODULE_9__actions_skills_actions__["c" /* LoadAction */]())
             .switchMap(function () {
             return _this.skillsService.getGroups()
-                .map(function (groups) { return new __WEBPACK_IMPORTED_MODULE_9__actions_skills_actions__["d" /* LoadSuccessAction */](groups); })
+                .map(function (groups) { return new __WEBPACK_IMPORTED_MODULE_9__actions_skills_actions__["d" /* LoadSuccessAction */](groups.sort(function (group1, group2) {
+                return group1.position - group2.position;
+            })); })
                 .catch(function () { return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_7_rxjs_observable_of__["of"])(new __WEBPACK_IMPORTED_MODULE_9__actions_skills_actions__["d" /* LoadSuccessAction */]([])); });
         });
     }
