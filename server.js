@@ -5,7 +5,10 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var api = require('./routes/api');
 
-var port = 3000;
+var env = process.env.NODE_ENV || 'development';
+var config = require('./conf/config')[env];
+
+var port = config.server.port;
 
 var app = express();
 
